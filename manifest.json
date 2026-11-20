@@ -1,0 +1,16 @@
+{
+  "name": "Cris Mapa",
+  "version": "1.0.0",
+  "manifest_version": 1,
+  "description": "Mapa da cidade que se desdobra na tela, com pins de locais que o mestre coloca e move.",
+  "author": "@mestremxrpg no Youtube",
+  "icon": "https://emixiszao.github.io/cris-mapa/icon.svg",
+  "background_url": "https://emixiszao.github.io/cris-mapa/background.html",
+  "action": {
+    "title": "Mapa",
+    "icon": "https://emixiszao.github.io/cris-mapa/icon.svg",
+    "popover": "https://emixiszao.github.io/cris-mapa/abrir.html",
+    "width": 24,
+    "height": 24
+  }
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Cris Mapa - segundo plano</title>
+</head>
+<body>
+<script type="module">
+// Ao clicar no ícone da extensão, abre o mapa numa janela só para quem clicou e esconde o quadrinho do ícone.
+import OBR from "https://esm.sh/@owlbear-rodeo/sdk@3";
+
+const MODAL_ID = "com.cris.mapa/janela";
+
+async function abrirMapa() {
+  try {
+    const [W, H] = await Promise.all([OBR.viewport.getWidth(), OBR.viewport.getHeight()]);
+    await OBR.modal.close(MODAL_ID).catch(() => {});
+    await OBR.modal.open({
+      id: MODAL_ID,
+      url: new URL("mapa.html", location.href).href,
+      width: Math.round(W * 0.97),
+      height: Math.round(H * 0.95),
+      hidePaper: true
+    });
+  } catch (e) {
+    OBR.notification.show("Não foi possível abrir o mapa.", "ERROR");
+  }
+}
+
+OBR.onReady(() => {
+  OBR.action.onOpenChange(async aberto => {
+    if (!aberto) return;
+    await abrirMapa();
+    OBR.action.close();
+  });
+});
+</script>
+</body>
+</html>
