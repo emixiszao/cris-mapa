@@ -6,26 +6,7 @@
 <style>html, body { margin:0; height:100%; background:transparent; }</style>
 </head>
 <body>
-<script type="module">
-// Plano B: se o segundo plano não abrir o mapa, este quadro abre e se fecha.
-import OBR from "https://esm.sh/@owlbear-rodeo/sdk@3";
-const MODAL_ID = "com.cris.mapa/janela";
-
-OBR.onReady(() => {
-  setTimeout(async () => {
-    try {
-      const [W, H] = await Promise.all([OBR.viewport.getWidth(), OBR.viewport.getHeight()]);
-      await OBR.modal.close(MODAL_ID).catch(() => {});
-      await OBR.modal.open({
-        id: MODAL_ID,
-        url: new URL("mapa.html", location.href).href,
-        width: Math.round(W * 0.97), height: Math.round(H * 0.95),
-        hidePaper: true
-      });
-      OBR.action.close();
-    } catch (e) { /* ignora */ }
-  }, 700);
-});
-</script>
+<!-- Página vazia de propósito: quem abre o mapa ao clicar no ícone é o background.html.
+     (O Owlbear carrega esta página escondida quando entra na sala, então ela não pode abrir nada sozinha.) -->
 </body>
 </html>
